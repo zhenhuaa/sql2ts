@@ -1,2 +1,2 @@
-# sql2ts
-convert sql ddl statement to typescript interface
+# SQL2TS
+Convert sql ddl statement to typescript interface

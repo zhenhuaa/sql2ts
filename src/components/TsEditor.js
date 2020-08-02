@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import AceEditor from 'react-ace'
-import "ace-builds/src-noconflict/mode-typescript";
-import "ace-builds/src-noconflict/theme-gruvbox";
+import * as Toggle from 'react-toggle'
 
 function TsEditor(props) {
   return (
     <AceEditor
-      width="auto"
-      placeholder="Generated Typescript Interface"
+      width={props.width}
+      placeholder={props.placeholder}
       mode="typescript"
-      theme="gruvbox"
+      theme={props.theme}
       name="tsEditor"
       readOnly = {true}
       fontSize={14}
-      showPrintMargin={true}
+      showPrintMargin={false}
       showGutter={true}
       highlightActiveLine={false}
       value={props.code}

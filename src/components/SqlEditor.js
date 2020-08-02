@@ -1,24 +1,22 @@
 import React, {useState}  from "react"; import AceEditor from 'react-ace'
-import "ace-builds/src-noconflict/mode-mysql";
-import "ace-builds/src-noconflict/theme-gruvbox";
 
 
 function SqlEditor(props) {
   function onLoad(editor) {
-    console.log(editor, "sqlEditor")
+    // console.log(editor, "sqlEditor")
   }
 
   return (
     <AceEditor
-      width="auto"
+      width={props.width}
       placeholder="Type SQL DDL Statement Here"
       mode="mysql"
-      theme="gruvbox"
+      theme={props.theme}
       name="sqlEditor"
       onLoad={onLoad}
       onChange={props.onChange}
       fontSize={14}
-      showPrintMargin={true}
+      showPrintMargin={false}
       showGutter={true}
       highlightActiveLine={true}
       minLines={100}

@@ -34,10 +34,6 @@ function App() {
     setTsCode(ts);
   }, [sqlCode, commentFlag]);
 
-  useEffect(() => {
-    window.document.title = "SQL2TS"
-  })
-
   const containerStyles = {
     display: "grid",
     gridTemplateColumns: "6fr 4fr",
@@ -72,7 +68,7 @@ function App() {
       lines.push("\n");
       return lines.join("\n");
     } else {
-      return "\n";
+      return "";
     }
   }
 
@@ -88,9 +84,6 @@ function App() {
       let tsCode = ret.map(astToInterface).join("");
       return tsCode;
     } catch (err) {
-      console.log(err);
-      const errLine = err.location.start;
-      console.log(errLine);
       return err.message;
     }
   }

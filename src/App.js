@@ -6,6 +6,7 @@ import TsEditor from "./components/TsEditor";
 import "ace-builds/src-noconflict/mode-mysql";
 import "ace-builds/src-noconflict/mode-typescript";
 import "ace-builds/src-noconflict/theme-gruvbox";
+import "ace-builds/src-noconflict/ext-language_tools";
 import Toggle from "react-toggle";
 import "./css/bootstrap.min.css";
 
@@ -18,10 +19,19 @@ const sqlTypeToTsTypeMap = {
   tinyint: "number",
 };
 
+const exampleSqlCode = `CREATE TABLE \`profile\` (
+  \`roleId\` bigint(20) NOT NULL COMMENT 'playerId',
+  \`location\` varchar(50) DEFAULT NULL COMMENT 'country-province-city',
+  \`signature\` varchar(100) DEFAULT NULL COMMENT 'signature text',
+  \`avatar\` varchar(255) DEFAULT NULL COMMENT 'user avatar url',
+  PRIMARY KEY (\`RoleId\`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='user profile';
+`;
+
 function App() {
-  const [sqlCode, setSqlCode] = useState("");
+  const [sqlCode, setSqlCode] = useState(exampleSqlCode);
   const [tsCode, setTsCode] = useState("");
-  const [theme, setTheme] = useState("gruvbox");
+  const [theme] = useState("gruvbox");
   const [commentFlag, setCommentFlag] = useState(true);
   const tsPh = "// Generated Typescript Interface";
 
@@ -52,6 +62,10 @@ function App() {
   function astToInterface(tableDef) {
     if (tableDef.tableName) {
       let lines = [];
+      if (commentFlag && tableDef.comment) {
+        const tbCommentLine = `// ${tableDef.comment}`;
+        lines.push(tbCommentLine);
+      }
       let startLine = `interface ${tableDef.tableName} {`;
       lines.push(startLine);
       for (let col of tableDef.cols) {
@@ -84,7 +98,10 @@ function App() {
       let tsCode = ret.map(astToInterface).join("");
       return tsCode;
     } catch (err) {
-      return err.message;
+      let line = err.location.start.line;
+      let column = err.location.start.column;
+      const showMessage = `Line ${line}, column ${column}:  ` + err.message;
+      return showMessage;
     }
   }
 
@@ -93,22 +110,42 @@ function App() {
       className="app"
       style={{ backgroundColor: "#1D2021", padding: "20px" }}
     >
-      <nav className="navbar navbar-expand-lg" style={{display:"flex", justifyItems: "flex-start"}}>
-        <span className="navbar-brand" style={{ fontSize: "46px", color: "antiquewhite"}}>
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{ display: "flex", justifyItems: "flex-start" }}
+      >
+        <span
+          className="navbar-brand"
+          style={{ fontSize: "46px", color: "antiquewhite" }}
+        >
           SQL2TS
         </span>
 
         <div
           className="toolbar"
-          style={{ display: "flex", alignSelf: "flex-end", paddingLeft: "20px" }}
+          style={{
+            display: "flex",
+            alignSelf: "flex-end",
+            paddingLeft: "20px",
+          }}
         >
           <div className="comment">
-            <label style={{display:"flex"}}>
-              <Toggle style={{alignSelf: "center"}}
+            <label style={{ display: "flex" }}>
+              <Toggle
+                style={{ alignSelf: "center" }}
                 defaultChecked={commentFlag}
                 onChange={toggleComment}
               ></Toggle>
-              <span style={{ color: "adafae", fontSize: "13px", alignSelf: "center", paddingLeft: "6px"}}>Comments</span>
+              <span
+                style={{
+                  color: "adafae",
+                  fontSize: "13px",
+                  alignSelf: "center",
+                  paddingLeft: "6px",
+                }}
+              >
+                Comments
+              </span>
             </label>
           </div>
         </div>
@@ -122,6 +159,7 @@ function App() {
           onChange={onSqlChange}
           theme={theme}
         ></SqlEditor>
+
         <TsEditor
           placeholder={tsPh}
           className="ts-editor"
@@ -130,7 +168,6 @@ function App() {
           theme={theme}
         ></TsEditor>
       </div>
-
     </div>
   );
 }

@@ -1,31 +1,32 @@
-import React, {useState}  from "react"; import AceEditor from 'react-ace'
-
+import React from "react";
+import AceEditor from "react-ace";
 
 function SqlEditor(props) {
   function onLoad(editor) {
-    // console.log(editor, "sqlEditor")
   }
 
   return (
     <AceEditor
       width={props.width}
-      placeholder="Type SQL DDL Statement Here"
+      placeholder="Type SQL Create Table Statement Here"
       mode="mysql"
       theme={props.theme}
       name="sqlEditor"
-      onLoad={onLoad}
       onChange={props.onChange}
+      onLoad={onLoad}
       fontSize={14}
       showPrintMargin={false}
       showGutter={true}
       highlightActiveLine={true}
       minLines={100}
-      maxLines="Infinity"
+      maxLines={Infinity}
+      value={props.code}
+      annotations={props.annotations}
       setOptions={{
-        enableBasicAutocompletion: false,
-        enableLiveAutocompletion: false,
-        enableSnippets: false,
-        showGutter: false,
+        enableBasicAutocompletion: true,
+        enableLiveAutocompletion: true,
+        enableSnippets: true,
+        showGutter: true,
         showLineNumbers: true,
         tabSize: 2,
       }}

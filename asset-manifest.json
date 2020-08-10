@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/sql2ts/static/css/main.3d7566eb.chunk.css",
-    "main.js": "/sql2ts/static/js/main.a45791b0.chunk.js",
-    "main.js.map": "/sql2ts/static/js/main.a45791b0.chunk.js.map",
+    "main.css": "/sql2ts/static/css/main.6b8852b1.chunk.css",
+    "main.js": "/sql2ts/static/js/main.2c3d4e02.chunk.js",
+    "main.js.map": "/sql2ts/static/js/main.2c3d4e02.chunk.js.map",
     "runtime-main.js": "/sql2ts/static/js/runtime-main.56c3b1d9.js",
     "runtime-main.js.map": "/sql2ts/static/js/runtime-main.56c3b1d9.js.map",
-    "static/js/2.554a1d37.chunk.js": "/sql2ts/static/js/2.554a1d37.chunk.js",
-    "static/js/2.554a1d37.chunk.js.map": "/sql2ts/static/js/2.554a1d37.chunk.js.map",
+    "static/js/2.a8437360.chunk.js": "/sql2ts/static/js/2.a8437360.chunk.js",
+    "static/js/2.a8437360.chunk.js.map": "/sql2ts/static/js/2.a8437360.chunk.js.map",
     "index.html": "/sql2ts/index.html",
-    "precache-manifest.41155108095687ed8775d301b9e7703b.js": "/sql2ts/precache-manifest.41155108095687ed8775d301b9e7703b.js",
+    "precache-manifest.9ab5f219180a69c54415eae2844aae81.js": "/sql2ts/precache-manifest.9ab5f219180a69c54415eae2844aae81.js",
     "service-worker.js": "/sql2ts/service-worker.js",
-    "static/css/main.3d7566eb.chunk.css.map": "/sql2ts/static/css/main.3d7566eb.chunk.css.map",
-    "static/js/2.554a1d37.chunk.js.LICENSE.txt": "/sql2ts/static/js/2.554a1d37.chunk.js.LICENSE.txt"
+    "static/css/main.6b8852b1.chunk.css.map": "/sql2ts/static/css/main.6b8852b1.chunk.css.map",
+    "static/js/2.a8437360.chunk.js.LICENSE.txt": "/sql2ts/static/js/2.a8437360.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.56c3b1d9.js",
-    "static/js/2.554a1d37.chunk.js",
-    "static/css/main.3d7566eb.chunk.css",
-    "static/js/main.a45791b0.chunk.js"
+    "static/js/2.a8437360.chunk.js",
+    "static/css/main.6b8852b1.chunk.css",
+    "static/js/main.2c3d4e02.chunk.js"
   ]
 }

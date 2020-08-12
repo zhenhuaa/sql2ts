@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d4e3f49ab3cc507f0c4aff76b2c5e639",
+    "revision": "d49b27f6c2c6424d6a434cc70a2e8f57",
     "url": "/sql2ts/index.html"
   },
   {
-    "revision": "d066624427eddccfe855",
+    "revision": "8a79a29437b82e108b75",
     "url": "/sql2ts/static/css/main.6b8852b1.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sql2ts/static/js/2.a8437360.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d066624427eddccfe855",
-    "url": "/sql2ts/static/js/main.2c3d4e02.chunk.js"
+    "revision": "8a79a29437b82e108b75",
+    "url": "/sql2ts/static/js/main.68a6c03e.chunk.js"
   },
   {
     "revision": "135501306e50da8f6192",

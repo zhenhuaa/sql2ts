@@ -63,7 +63,7 @@ function App() {
     if (tableDef.tableName) {
       let lines = [];
       if (commentFlag && tableDef.comment) {
-        const tbCommentLine = `// ${tableDef.comment}`;
+        const tbCommentLine = `/**\n * ${tableDef.comment}\n */`;
         lines.push(tbCommentLine);
       }
       let startLine = `interface ${tableDef.tableName} {`;
@@ -72,8 +72,8 @@ function App() {
         let type = sqlTypeToTsType(col.type);
         let colLine = `  ${col.colName}: ${type}`;
         if (commentFlag && col.comment) {
-          const colComment = ` // ${col.comment}`;
-          colLine += colComment;
+          const colComment = `  /**\n   * ${col.comment}\n   */`;
+          lines.push(colComment)
         }
         lines.push(colLine);
       }

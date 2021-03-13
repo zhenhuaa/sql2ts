@@ -43,15 +43,17 @@ LineBreak = "\n" / "\r\n" / "\r"
 EOF = !.
   
 ColDef 
-  = _ colName:field _ type:type typeModify? _ colsModify comment:comment? ","? _ {
+  = _ colName:field _ type:type _ typeModify? _ colsModify comment:comment? ","? _ {
   return {colName: colName, type:type, comment: comment || ""}
 }
   
-type = char:[a-z]+ {return char.join("")}
+type = char:[a-z]i+ {
+  return char.map(r => r.toLowerCase()).join("")
+}
 
 intSign = "signed"i / "unsigned"i
 
-typeModify = "(" digits ")" _ intSign? _  
+typeModify = "(" [0-9, ]+ ")" _ intSign? _  
 
 digits = [0-9]+
 

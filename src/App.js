@@ -11,12 +11,14 @@ import Toggle from "react-toggle";
 import "./css/bootstrap.min.css";
 
 const sqlTypeToTsTypeMap = {
+  char: "string",
   varchar: "string",
   text: "string",
   int: "number",
   smallint: "number",
   bigint: "number",
   tinyint: "number",
+  float: "number"
 };
 
 const exampleSqlCode = `CREATE TABLE \`profile\` (
@@ -63,7 +65,7 @@ function App() {
     if (tableDef.tableName) {
       let lines = [];
       if (commentFlag && tableDef.comment) {
-        const tbCommentLine = `/**\n * ${tableDef.comment}\n */`;
+        const tbCommentLine = `/** ${tableDef.comment} */`;
         lines.push(tbCommentLine);
       }
       let startLine = `interface ${tableDef.tableName} {`;
@@ -72,7 +74,7 @@ function App() {
         let type = sqlTypeToTsType(col.type);
         let colLine = `  ${col.colName}: ${type}`;
         if (commentFlag && col.comment) {
-          const colComment = `  /**\n   * ${col.comment}\n   */`;
+          const colComment = `  /** ${col.comment} */`;
           lines.push(colComment)
         }
         lines.push(colLine);

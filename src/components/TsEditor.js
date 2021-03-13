@@ -8,7 +8,7 @@ function TsEditor(props) {
 
   const handleCopy = React.useCallback(() => {
     clipboard.copy(props.code);
-  }, [clipboard.copy, props.code]);
+  }, [clipboard, props.code]);
 
   return (
     <div>
